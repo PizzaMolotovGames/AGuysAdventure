@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dne1ybnw62dt3"]
+[gd_scene load_steps=6 format=3 uid="uid://dne1ybnw62dt3"]
 
 [ext_resource type="Script" uid="uid://b6a01lp5d76l4" path="res://player/scripts/playerScripts/player.gd" id="1_oul6g"]
 
@@ -13,11 +13,9 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_kqu6x")
 size = Vector3(0.8, 0.1, 0.3)
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oul6g"]
-length = 2.0
-
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oul6g")
+playerWalkingSpeed = 10.0
 
 [node name="mainHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kqu6x")
@@ -29,8 +27,5 @@ mesh = SubResource("CapsuleMesh_oul6g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.388351)
 mesh = SubResource("BoxMesh_oul6g")
 
-[node name="cameraArm" type="SpringArm3D" parent="."]
-shape = SubResource("SeparationRayShape3D_oul6g")
-
-[node name="Camera3D" type="Camera3D" parent="cameraArm"]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.68316, 4.27897)
