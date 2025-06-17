@@ -13,3 +13,18 @@ config_version=5
 config/name="AGuysAdventure"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://UI/": "orange",
+"res://enemies/": "red",
+"res://imports/": "gray",
+"res://npcs/": "green",
+"res://player/": "purple",
+"res://player/animations/": "red",
+"res://player/scripts/": "blue",
+"res://world/": "yellow",
+"res://world/map/": "green",
+"res://world/worldObjects/": "purple"
+}
