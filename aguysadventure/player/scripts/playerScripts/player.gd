@@ -11,11 +11,14 @@ var playerStateArray: Array = ["Idle", "Attacking", "Walking", "Sprinting", "Stu
 var playerDirection: Vector3 = Vector3()
 
 func _ready() -> void:
-	pass
+	setPlayerState("Idle")
 
 func _physics_process(_delta: float) -> void:
-	if playerDirection != Vector3.ZERO:
+	setDirection()
+	if checkDirectionalInput():
 		setPlayerState("Walking")
+		if Input.is_action_pressed("press_SHIFT"):
+			setPlayerState("Sprinting")
 	else:
 		setPlayerState("Idle")
 
@@ -31,15 +34,27 @@ func jump():
 func attack():
 	pass
 
+func checkDirectionalInput():
+	if Input.is_action_pressed("press_W"):
+		return true
+	if Input.is_action_pressed("press_S"):
+		return true
+	if Input.is_action_pressed("press_D"):
+		return true
+	if Input.is_action_pressed("press_A"):
+		return true
+	return false
+
 func setDirection() -> void:
 	if Input.is_action_pressed("press_W"):
-		playerDirection.z -= 1
+		playerDirection.z = -1
 	if Input.is_action_pressed("press_S"):
-		playerDirection.z += 1
+		playerDirection.z = 1
 	if Input.is_action_pressed("press_D"):
-		playerDirection.x += 1
+		playerDirection.x = 1
 	if Input.is_action_pressed("press_A"):
-		playerDirection.x -= 1
+		playerDirection.x = -1
+	playerDirection = playerDirection.normalized()
 	return
 
 func move():

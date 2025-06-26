@@ -15,17 +15,19 @@ size = Vector3(0.8, 0.1, 0.3)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oul6g")
-playerWalkingSpeed = 10.0
 
 [node name="mainHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kqu6x")
 
-[node name="model" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_oul6g")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.388351)
-mesh = SubResource("BoxMesh_oul6g")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.68316, 4.27897)
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="body" type="MeshInstance3D" parent="pivot"]
+mesh = SubResource("CapsuleMesh_oul6g")
+skeleton = NodePath("../..")
+
+[node name="face" type="MeshInstance3D" parent="pivot/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.388351)
+mesh = SubResource("BoxMesh_oul6g")
