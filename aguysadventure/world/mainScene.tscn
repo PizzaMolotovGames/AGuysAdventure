@@ -1,13 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7l25m0476ysy"]
+[gd_scene load_steps=8 format=3 uid="uid://c7l25m0476ysy"]
 
 [ext_resource type="PackedScene" uid="uid://dne1ybnw62dt3" path="res://player/player.tscn" id="1_xrfhj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6m6j"]
-albedo_color = Color(0.0727742, 0.507866, 0.243537, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_e6m6j"]
-material = SubResource("StandardMaterial3D_e6m6j")
-size = Vector2(30, 30)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xrfhj"]
 sky_top_color = Color(0.532626, 0.754315, 0.848747, 1)
@@ -37,10 +30,17 @@ adjustment_brightness = 1.05
 adjustment_contrast = 1.05
 adjustment_saturation = 1.3
 
-[node name="MainNode" type="Node"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6m6j"]
+albedo_color = Color(0.0727742, 0.507866, 0.243537, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_e6m6j")
+[sub_resource type="PlaneMesh" id="PlaneMesh_e6m6j"]
+material = SubResource("StandardMaterial3D_e6m6j")
+size = Vector2(30, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrfhj"]
+size = Vector3(30, 0.1, 30)
+
+[node name="MainScene" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_xrfhj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07025, 0)
@@ -50,3 +50,14 @@ playerSprintingSpeed = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_axvt4")
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_e6m6j")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_xrfhj")

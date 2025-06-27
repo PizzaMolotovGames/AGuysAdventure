@@ -1,17 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dne1ybnw62dt3"]
+[gd_scene load_steps=9 format=3 uid="uid://dne1ybnw62dt3"]
 
 [ext_resource type="Script" uid="uid://b6a01lp5d76l4" path="res://player/scripts/playerScripts/player.gd" id="1_oul6g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oul6g"]
+albedo_color = Color(0.897925, 0, 0.213185, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
+material = SubResource("StandardMaterial3D_oul6g")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqu6x"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(2.98411e-06, 0.498709, 0.755258, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_oul6g"]
 material = SubResource("StandardMaterial3D_kqu6x")
-size = Vector3(0.8, 0.1, 0.3)
+size = Vector3(0.8, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkbax"]
+albedo_color = Color(0.987105, 0, 0.263779, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rkbax"]
+material = SubResource("StandardMaterial3D_rkbax")
+size = Vector3(0.8, 1, 0.4)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oul6g")
@@ -28,6 +39,11 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 mesh = SubResource("CapsuleMesh_oul6g")
 skeleton = NodePath("../..")
 
-[node name="face" type="MeshInstance3D" parent="pivot/body"]
+[node name="face" type="MeshInstance3D" parent="pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.388351)
 mesh = SubResource("BoxMesh_oul6g")
+skeleton = NodePath("../body")
+
+[node name="Backpack" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.569385)
+mesh = SubResource("BoxMesh_rkbax")
