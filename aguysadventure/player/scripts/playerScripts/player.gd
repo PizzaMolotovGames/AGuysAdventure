@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
+# --- Node References ---
 @onready var Pivot: Node3D = $"pivot"
+#@onready var cameraOrigin: Node3D = $cameraOrigin
 
 # --- Movement Config ---
 @export var WalkingSpeed: float = 5.0
@@ -14,6 +16,9 @@ extends CharacterBody3D
 @export var JumpCounterMax: int = 30
 @export var jumpLimiter: int = 8
 
+# --- Mouse Config ---
+#@export var sensitivity: float = 0.2
+
 # --- Jump Buffer + Coyote Time ---
 @export var coyote_time: float = 0.2
 @export var jump_buffer_time: float = 0.2
@@ -25,6 +30,26 @@ var State: String = "Idle"
 var Direction: Vector3 = Vector3.ZERO
 var JumpCounter: int = 0
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+#var yaw: float= 0.0
+#var pitch: float = 0.0
+#
+#func _input(event):
+	#if event is InputEventMouseMotion:
+		#yaw -= event.relative.x * sensitivity
+		#pitch -= event.relative.y * sensitivity
+		#pitch = clamp(pitch, -80, 45)
+#
+		## Apply yaw to the cameraOrigin (horizontal)
+		#var yaw_quat = Quaternion(Vector3.UP, deg_to_rad(yaw))
+		#cameraOrigin.rotation = yaw_quat.get_euler()
+#
+		## Apply pitch to the pivot (vertical)
+		#var pitch_quat = Quaternion(Vector3.RIGHT, deg_to_rad(pitch))
+		#cameraOrigin.rotation = pitch_quat.get_euler()
+		
 # --- Main Loop ---
 func _physics_process(_delta: float) -> void:
 	update_direction()
