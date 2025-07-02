@@ -27,7 +27,8 @@ folder_colors={
 "res://player/scripts/": "blue",
 "res://world/": "yellow",
 "res://world/map/": "green",
-"res://world/worldObjects/": "purple"
+"res://world/worldObjects/": "purple",
+"res://world/worldObjects/technicalObjects/": "blue"
 }
 
 [input]

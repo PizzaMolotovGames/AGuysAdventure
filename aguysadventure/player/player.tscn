@@ -25,6 +25,7 @@ material = SubResource("StandardMaterial3D_rkbax")
 size = Vector3(0.8, 1, 0.4)
 
 [node name="Player" type="CharacterBody3D"]
+physics_interpolation_mode = 1
 script = ExtResource("1_oul6g")
 
 [node name="mainHitbox" type="CollisionShape3D" parent="."]
