@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7l25m0476ysy"]
+[gd_scene load_steps=8 format=3 uid="uid://c7l25m0476ysy"]
 
 [ext_resource type="PackedScene" uid="uid://dne1ybnw62dt3" path="res://player/player.tscn" id="1_xrfhj"]
 [ext_resource type="PackedScene" uid="uid://cuh84jthihfb8" path="res://world/map/test_level.tscn" id="2_vbium"]
+[ext_resource type="PackedScene" uid="uid://d20j67rjdypo0" path="res://npcs/test_npc.tscn" id="3_axvt4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbium"]
 sky_curve = 0.0588439
@@ -28,14 +29,16 @@ exposure_multiplier = 1.244
 [node name="MainScene" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_xrfhj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07025, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.07025, 0)
 floor_constant_speed = true
 WalkingSpeed = 10.0
 SprintingSpeed = 20.0
-jump_buffer_time = 0.4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w1q4r")
 camera_attributes = SubResource("CameraAttributesPractical_vbium")
 
 [node name="TestLevel" parent="." instance=ExtResource("2_vbium")]
+
+[node name="TestNPC" parent="." instance=ExtResource("3_axvt4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -6)

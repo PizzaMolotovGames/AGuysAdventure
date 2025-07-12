@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3s177h61nm0a"]
+[gd_scene load_steps=5 format=3 uid="uid://b3s177h61nm0a"]
 
 [ext_resource type="Script" uid="uid://bl8eeeg3vbmh6" path="res://world/worldObjects/technicalObjects/interaction_component.gd" id="1_vkjok"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkjok"]
 albedo_color = Color(4.04298e-06, 0.880591, 0.836728, 1)
+rim_enabled = true
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_fx7sc"]
 material = SubResource("StandardMaterial3D_vkjok")
 size = Vector2(0.5, 0.5)
 
-[node name="interactionComponent" type="Node"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vkjok"]
+height = 2.5
+radius = 1.5
+
+[node name="interactionComponent" type="Node3D"]
 script = ExtResource("1_vkjok")
 
-[node name="InteractionIcon" type="CPUParticles3D" parent="."]
+[node name="InteractionParticle" type="CPUParticles3D" parent="."]
+emitting = false
 amount = 1
 mesh = SubResource("QuadMesh_fx7sc")
 gravity = Vector3(0, 0, 0)
+
+[node name="interactionCollider" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactionCollider"]
+shape = SubResource("CylinderShape3D_vkjok")
