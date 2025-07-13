@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs7fmce8tbvjk"]
+
+[ext_resource type="Script" uid="uid://by208cyuii5to" path="res://npcs/scripts/npc_setup_scene.gd" id="1_pmstn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6fb21"]
+
+[node name="NPC" type="Node3D"]
+script = ExtResource("1_pmstn")
+
+[node name="HitBox" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("CapsuleShape3D_6fb21")

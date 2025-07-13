@@ -29,7 +29,7 @@ exposure_multiplier = 1.244
 [node name="MainScene" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_xrfhj")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.07025, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.976553, 0)
 floor_constant_speed = true
 WalkingSpeed = 10.0
 SprintingSpeed = 20.0
