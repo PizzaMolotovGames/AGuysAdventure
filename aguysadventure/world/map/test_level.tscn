@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuh84jthihfb8"]
+[gd_scene load_steps=6 format=3 uid="uid://cuh84jthihfb8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6m6j"]
 albedo_color = Color(0.523981, 0.514541, 0.516902, 1)
@@ -9,12 +9,6 @@ size = Vector2(120, 120)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h473u"]
 size = Vector3(120, 0.1, 120)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ytw6d"]
-size = Vector3(3, 0.5, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ytw6d"]
-size = Vector3(3, 0.5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h473u"]
 size = Vector3(0.5, 10, 5)
@@ -34,36 +28,6 @@ skeleton = NodePath("../..")
 
 [node name="GroundColliderShape" type="CollisionShape3D" parent="Ground/GroundCollider"]
 shape = SubResource("BoxShape3D_h473u")
-
-[node name="Platform1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.999776, -0.0211518, 0, 0.0211518, 0.999776, 0, 0, 0, 1, -13.1968, 0.466974, 0)
-mesh = SubResource("BoxMesh_ytw6d")
-skeleton = NodePath("../Ground")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
-shape = SubResource("BoxShape3D_ytw6d")
-
-[node name="Platform2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9932, 1.68474, 0)
-mesh = SubResource("BoxMesh_ytw6d")
-skeleton = NodePath("../Ground")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
-shape = SubResource("BoxShape3D_ytw6d")
-
-[node name="Platform3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3859, 2.62226, -4.05174)
-mesh = SubResource("BoxMesh_ytw6d")
-skeleton = NodePath("../Ground")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
-shape = SubResource("BoxShape3D_ytw6d")
 
 [node name="Wall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.97085, 4.95901, -11.2281)

@@ -1,27 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://dne1ybnw62dt3"]
+[gd_scene load_steps=8 format=3 uid="uid://dne1ybnw62dt3"]
 
 [ext_resource type="Script" uid="uid://b6a01lp5d76l4" path="res://player/scripts/playerScripts/player.gd" id="1_oul6g"]
+[ext_resource type="Material" uid="uid://dm8axuyfyvfs1" path="res://player/testMaterial2.tres" id="2_g1dw6"]
+[ext_resource type="Material" uid="uid://drq7w14i1huwd" path="res://player/normalTestMaterial2.tres" id="3_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oul6g"]
-albedo_color = Color(0.897925, 0, 0.213185, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
-material = SubResource("StandardMaterial3D_oul6g")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqu6x"]
-albedo_color = Color(2.98411e-06, 0.498709, 0.755258, 1)
+material = ExtResource("2_g1dw6")
 
 [sub_resource type="BoxMesh" id="BoxMesh_oul6g"]
-material = SubResource("StandardMaterial3D_kqu6x")
+material = ExtResource("3_yw30f")
 size = Vector3(0.8, 0.3, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkbax"]
-albedo_color = Color(0.987105, 0, 0.263779, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_rkbax"]
-material = SubResource("StandardMaterial3D_rkbax")
+material = ExtResource("2_g1dw6")
 size = Vector3(0.8, 1, 0.4)
 
 [node name="Player" type="CharacterBody3D" groups=["CanInteract"]]
@@ -32,13 +25,14 @@ script = ExtResource("1_oul6g")
 shape = SubResource("CapsuleShape3D_kqu6x")
 
 [node name="pivot" type="Node3D" parent="."]
+process_priority = -1
 
 [node name="body" type="MeshInstance3D" parent="pivot"]
 mesh = SubResource("CapsuleMesh_oul6g")
 skeleton = NodePath("../..")
 
 [node name="face" type="MeshInstance3D" parent="pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.388351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00252676, 0.514343, -0.384998)
 mesh = SubResource("BoxMesh_oul6g")
 skeleton = NodePath("../body")
 

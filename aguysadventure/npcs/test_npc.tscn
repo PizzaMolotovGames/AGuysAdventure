@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d20j67rjdypo0"]
+[gd_scene load_steps=5 format=3 uid="uid://d20j67rjdypo0"]
 
+[ext_resource type="Script" uid="uid://dcc44o04u26e5" path="res://npcs/test_npc.gd" id="1_iex33"]
 [ext_resource type="PackedScene" uid="uid://b3s177h61nm0a" path="res://world/worldObjects/technicalObjects/interaction_component.tscn" id="1_sdeel"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5iqc"]
@@ -7,6 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sdeel"]
 
 [node name="TestNPC" type="StaticBody3D"]
+script = ExtResource("1_iex33")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_b5iqc")
@@ -15,4 +17,6 @@ shape = SubResource("CapsuleShape3D_b5iqc")
 mesh = SubResource("CapsuleMesh_sdeel")
 
 [node name="interactionComponent" parent="." instance=ExtResource("1_sdeel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45596, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0224857, 1.36716, -0.0122344)
+
+[connection signal="interacted" from="interactionComponent" to="." method="_on_interaction_component_interacted"]

@@ -25,6 +25,7 @@ mesh = SubResource("QuadMesh_fx7sc")
 gravity = Vector3(0, 0, 0)
 
 [node name="interactionCollider" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25564, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactionCollider"]
 shape = SubResource("CylinderShape3D_vkjok")
