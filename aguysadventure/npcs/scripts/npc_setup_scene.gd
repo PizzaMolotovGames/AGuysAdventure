@@ -6,8 +6,12 @@ extends Node3D
 func _ready() -> void:
 	var hitboxShape = $HitBox/CollisionShape3D
 	
+	var interactionComponent: Node3D = $interactionComponent
+	
 	if hitboxHeight >= 1:
 		hitboxShape.shape.height = hitboxHeight
 	
 	if hitboxRadius >= 0.5:
 		hitboxShape.shape.radius = hitboxRadius
+		
+	interactionComponent.transform.origin.y = hitboxHeight / 2 + 0.3

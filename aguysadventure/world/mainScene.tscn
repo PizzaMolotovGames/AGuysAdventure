@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7l25m0476ysy"]
+[gd_scene load_steps=7 format=3 uid="uid://c7l25m0476ysy"]
 
 [ext_resource type="PackedScene" uid="uid://dne1ybnw62dt3" path="res://player/player.tscn" id="1_xrfhj"]
 [ext_resource type="PackedScene" uid="uid://cuh84jthihfb8" path="res://world/map/test_level.tscn" id="2_vbium"]
-[ext_resource type="PackedScene" uid="uid://d20j67rjdypo0" path="res://npcs/test_npc.tscn" id="3_axvt4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbium"]
 sky_curve = 0.0588439
@@ -39,6 +38,3 @@ environment = SubResource("Environment_w1q4r")
 camera_attributes = SubResource("CameraAttributesPractical_vbium")
 
 [node name="TestLevel" parent="." instance=ExtResource("2_vbium")]
-
-[node name="TestNPC" parent="." instance=ExtResource("3_axvt4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -6)

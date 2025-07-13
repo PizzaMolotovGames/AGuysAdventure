@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs7fmce8tbvjk"]
+[gd_scene load_steps=4 format=3 uid="uid://bs7fmce8tbvjk"]
 
 [ext_resource type="Script" uid="uid://by208cyuii5to" path="res://npcs/scripts/npc_setup_scene.gd" id="1_pmstn"]
+[ext_resource type="PackedScene" uid="uid://b3s177h61nm0a" path="res://world/worldObjects/technicalObjects/interaction_component.tscn" id="2_sqgc8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6fb21"]
 
@@ -11,3 +12,7 @@ script = ExtResource("1_pmstn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("CapsuleShape3D_6fb21")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+
+[node name="interactionComponent" parent="." instance=ExtResource("2_sqgc8")]
