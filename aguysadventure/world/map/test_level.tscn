@@ -31,6 +31,7 @@ shape = SubResource("BoxShape3D_h473u")
 
 [node name="Wall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.97085, 4.95901, -11.2281)
+gi_mode = 0
 mesh = SubResource("BoxMesh_h473u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall1"]

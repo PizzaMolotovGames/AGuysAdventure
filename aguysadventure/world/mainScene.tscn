@@ -6,8 +6,9 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbium"]
 sky_curve = 0.0588439
 sky_energy_multiplier = 2.71
+sky_cover_modulate = Color(0.762404, 0.762404, 0.762404, 1)
 ground_curve = 0.00143587
-sun_curve = 0.579562
+sun_curve = 1.883
 
 [sub_resource type="Sky" id="Sky_axvt4"]
 sky_material = SubResource("ProceduralSkyMaterial_vbium")
@@ -17,7 +18,6 @@ process_mode = 3
 background_mode = 2
 sky = SubResource("Sky_axvt4")
 ambient_light_source = 3
-ambient_light_color = Color(0.780971, 0.752589, 0.630917, 1)
 tonemap_mode = 1
 tonemap_exposure = 1.35
 tonemap_white = 1.24

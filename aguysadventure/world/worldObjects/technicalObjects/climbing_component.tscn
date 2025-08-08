@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ghbt08l13qyy"]
+
+[ext_resource type="Script" uid="uid://dfwgi38dnmks3" path="res://world/worldObjects/technicalObjects/scripts/climbing_component.gd" id="1_1wbku"]
+[ext_resource type="PackedScene" uid="uid://b3s177h61nm0a" path="res://world/worldObjects/technicalObjects/interaction_component.tscn" id="2_ssgkj"]
+
+[node name="ClimbingComponent" type="Node3D"]
+script = ExtResource("1_1wbku")
+
+[node name="interactionComponent" parent="." instance=ExtResource("2_ssgkj")]
+
+[node name="ClimbDestination" type="Marker3D" parent="."]
+
+[connection signal="interacted" from="interactionComponent" to="." method="_on_interacted"]

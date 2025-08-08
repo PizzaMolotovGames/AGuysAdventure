@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhew70tlyc3mn"]
+
+[ext_resource type="Script" uid="uid://dfwgi38dnmks3" path="res://world/worldObjects/technicalObjects/scripts/climbing_component.gd" id="1_nw1pn"]
+
+[node name="ClimbingComponent" type="Node3D"]
+script = ExtResource("1_nw1pn")

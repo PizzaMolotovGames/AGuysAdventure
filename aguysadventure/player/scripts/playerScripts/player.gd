@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 # --- Node References ---
 @onready var Pivot: Node3D = $"pivot"
-#@onready var cameraOrigin: Node3D = $cameraOrigin
+#@onready var cameraRotationPivot: Node3D = $"CameraRotationPivot"
+
+@onready var playerNode: Node3D = $"."
 
 # --- Movement Config ---
 @export var WalkingSpeed: float = 5.0
@@ -17,7 +19,12 @@ extends CharacterBody3D
 #@export var jumpLimiter: int = 8
 
 # --- Mouse Config ---
-#@export var sensitivity: float = 0.2
+#@export var cameraSensitivity: float = 0.02
+#@export var minRotationY: float = -45.0
+#@export var maxRotationY: float = 45.0
+#
+#var cameraRotationY: float = 0.0
+#var cameraRotationX: float = 0.0
 
 # --- Jump Buffer + Coyote Time ---
 #@export var coyote_time: float = 0.2
@@ -49,7 +56,7 @@ func _ready() -> void:
 		## Apply pitch to the pivot (vertical)
 		#var pitch_quat = Quaternion(Vector3.RIGHT, deg_to_rad(pitch))
 		#cameraOrigin.rotation = pitch_quat.get_euler()
-		
+
 # --- Main Loop ---
 func _physics_process(_delta: float) -> void:
 	update_direction()
@@ -58,6 +65,19 @@ func _physics_process(_delta: float) -> void:
 	state_logic()
 	rotate_()
 	move_and_slide()
+
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseMotion:
+		#cameraRotationY -= event.relative.x * cameraSensitivity
+		#cameraRotationX -= event.relative.y * cameraSensitivity
+		#cameraRotationX = clamp(cameraRotationX, minRotationY, maxRotationY)
+#
+		## --- YAW (horizontal): Rotate the player (CharacterBody3D) around the Y axis
+		#rotate_y(deg_to_rad(-event.relative.x * cameraSensitivity))  # note the minus for proper direction
+#
+		## --- PITCH (vertical): Rotate the pivot around the X axis
+		#var pitch_quat = Quaternion(Vector3.RIGHT, deg_to_rad(cameraRotationX))
+		#cameraRotationPivot.transform.basis = Basis(pitch_quat)
 
 # --- Input/State Transition ---
 #func handle_input():
@@ -95,6 +115,8 @@ func state_logic():
 			state_walking()
 		"Sprinting":
 			state_sprinting()
+		"Climbing":
+			state_climbing()
 		#"WeakJump":
 			#state_weak_jump()
 		#"StrongJump":
@@ -141,6 +163,10 @@ func state_sprinting():
 		change_state("Idle")
 
 	#try_jump()
+
+func state_climbing():
+	if Input.is_anything_pressed():
+		pass
 
 #func state_weak_jump():
 	#velocity.y += WeakJumpSpeed
